@@ -8,8 +8,8 @@ export const getHeaders = async (config: OpenAPIConfig, options: ApiRequestOptio
 
 	const headers = Object.entries({
 		Accept: 'application/json',
-		...additionalHeaders,
 		...options.headers,
+		...additionalHeaders,
 	})
 		.filter(([_, value]) => isDefined(value))
 		.reduce((headers, [key, value]) => ({
