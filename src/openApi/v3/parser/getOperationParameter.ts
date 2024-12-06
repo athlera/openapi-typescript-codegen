@@ -54,10 +54,7 @@ export const getOperationParameter = (openApi: OpenApi, parameter: OpenApiParame
             operationParameter.base = model.base;
             operationParameter.template = model.template;
             operationParameter.imports.push(...model.imports);
-            operationParameter.default =
-                parameter.in === 'header'
-                    ? `this.httpRequest.config.HEADERS['${parameter.name}']`
-                    : getModelDefault(schema);
+            operationParameter.default = getModelDefault(schema);
 
             return operationParameter;
         } else {
@@ -90,8 +87,7 @@ export const getOperationParameter = (openApi: OpenApi, parameter: OpenApiParame
             operationParameter.properties.push(...model.properties);
 
             // param default if the value is a header should be the config header
-            operationParameter.default =
-                parameter.in === 'header' ? `this.httpRequest.config.HEADERS['${parameter.name}']` : model.default;
+            operationParameter.default = model.default;
 
             return operationParameter;
         }

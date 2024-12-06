@@ -19,6 +19,11 @@ export const getOperationParameters = (openApi: OpenApi, parameters: OpenApiPara
     // Iterate over the parameters
     parameters.forEach(parameterOrReference => {
         const parameterDef = getRef<OpenApiParameter>(openApi, parameterOrReference);
+
+        if (parameterDef.in === 'header') {
+            return;
+        }
+
         const parameter = getOperationParameter(openApi, parameterDef);
 
         // We ignore the "api-version" param, since we do not want to add this
@@ -49,11 +54,11 @@ export const getOperationParameters = (openApi: OpenApi, parameters: OpenApiPara
                     operationParameters.imports.push(...parameter.imports);
                     break;
 
-                case 'header':
+                /*case 'header':
                     operationParameters.parametersHeader.push(parameter);
                     operationParameters.parameters.push(parameter);
                     operationParameters.imports.push(...parameter.imports);
-                    break;
+                    break;*/
             }
         }
     });

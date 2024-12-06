@@ -59,6 +59,7 @@ const generateRealWorldSpecs = async () => {
 const main = async () => {
     await generate('./test/spec/v2.json', './test/generated/v2/');
     await generate('./test/spec/v3.json', './test/generated/v3/');
+    await generate('http://localhost:3002/api-json', './test/generated/platform/');
     // await generateRealWorldSpecs();
 };
 
