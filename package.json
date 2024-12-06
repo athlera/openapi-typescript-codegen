@@ -63,7 +63,7 @@
         "docker": "docker build -t eeelenbaas/openapi-typescript-codegen .",
         "changeset": "changeset",
         "changeset:version": "changeset version",
-        "publish-it": "pnpm build && changeset publish"
+        "publish-it": "npm run build && changeset publish"
     },
     "dependencies": {
         "@apidevtools/json-schema-ref-parser": "^11.5.4",
